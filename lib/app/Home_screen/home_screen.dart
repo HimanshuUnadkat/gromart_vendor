@@ -23,6 +23,7 @@ import 'package:store/models/user_model.dart';
 import 'package:store/models/vendor_model.dart';
 import 'package:store/models/wallet_transaction_model.dart';
 import 'package:store/themes/app_them_data.dart';
+import 'package:store/themes/responsive.dart';
 import 'package:store/themes/text_field_widget.dart';
 import 'package:store/utils/dark_theme_provider.dart';
 import 'package:store/utils/fire_store_utils.dart';
@@ -53,15 +54,25 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                              DashBoardController dashBoardController = Get.find<DashBoardController>();
+                              DashBoardController dashBoardController =
+                                  Get.find<DashBoardController>();
                               dashBoardController.selectedIndex.value = 3;
                             },
                             child: ClipOval(
                               child: NetworkImageWidget(
-                                imageUrl: controller.userModel.value.profilePictureURL.toString(),
+                                imageUrl: controller
+                                    .userModel.value.profilePictureURL
+                                    .toString(),
                                 height: 42,
                                 width: 42,
                                 fit: BoxFit.cover,
+                                errorWidget: Image.network(
+                                  Constant.placeholderImage,
+                                  fit: BoxFit.cover,
+                                  height: Responsive.height(8, context),
+                                  width: Responsive.width(15, context),
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
@@ -73,11 +84,21 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               Text(
                                 "Welcome to GroMart Store".tr,
-                                style: TextStyle(color: themeChange.getThem() ? AppThemeData.grey900 : AppThemeData.grey50, fontSize: 12, fontFamily: AppThemeData.regular),
+                                style: TextStyle(
+                                    color: themeChange.getThem()
+                                        ? AppThemeData.grey900
+                                        : AppThemeData.grey50,
+                                    fontSize: 12,
+                                    fontFamily: AppThemeData.regular),
                               ),
                               Text(
                                 "${controller.userModel.value.fullName()}".tr,
-                                style: TextStyle(color: themeChange.getThem() ? AppThemeData.grey900 : AppThemeData.grey50, fontSize: 16, fontFamily: AppThemeData.semiBold),
+                                style: TextStyle(
+                                    color: themeChange.getThem()
+                                        ? AppThemeData.grey900
+                                        : AppThemeData.grey50,
+                                    fontSize: 16,
+                                    fontFamily: AppThemeData.semiBold),
                               ),
                             ],
                           ),
@@ -88,14 +109,21 @@ class HomeScreen extends StatelessWidget {
                           controller.selectedTabIndex.value = value;
                         },
                         tabAlignment: TabAlignment.start,
-                        labelStyle: const TextStyle(fontFamily: AppThemeData.semiBold),
-                        labelColor: themeChange.getThem() ? AppThemeData.grey50 : AppThemeData.grey50,
-                        unselectedLabelStyle: const TextStyle(fontFamily: AppThemeData.medium),
-                        unselectedLabelColor: themeChange.getThem() ? AppThemeData.primary600 : AppThemeData.primary50,
+                        labelStyle:
+                            const TextStyle(fontFamily: AppThemeData.semiBold),
+                        labelColor: themeChange.getThem()
+                            ? AppThemeData.grey50
+                            : AppThemeData.grey50,
+                        unselectedLabelStyle:
+                            const TextStyle(fontFamily: AppThemeData.medium),
+                        unselectedLabelColor: themeChange.getThem()
+                            ? AppThemeData.primary600
+                            : AppThemeData.primary50,
                         indicatorColor: AppThemeData.secondary300,
                         isScrollable: true,
                         padding: const EdgeInsets.symmetric(horizontal: 18),
-                        labelPadding: const EdgeInsets.symmetric(horizontal: 20),
+                        labelPadding:
+                            const EdgeInsets.symmetric(horizontal: 20),
                         dividerColor: Colors.transparent,
                         tabs: [
                           Tab(
@@ -125,7 +153,8 @@ class HomeScreen extends StatelessWidget {
                         )
                       ],
                     ),
-                    body: Constant.isRestaurantVerification == true && controller.userModel.value.isDocumentVerify == false
+                    body: Constant.isRestaurantVerification == true &&
+                            controller.userModel.value.isDocumentVerify == false
                         ? Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
                             child: Column(
@@ -134,14 +163,17 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 Container(
                                   decoration: ShapeDecoration(
-                                    color: themeChange.getThem() ? AppThemeData.grey700 : AppThemeData.grey200,
+                                    color: themeChange.getThem()
+                                        ? AppThemeData.grey700
+                                        : AppThemeData.grey200,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(120),
                                     ),
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(20),
-                                    child: SvgPicture.asset("assets/icons/ic_document.svg"),
+                                    child: SvgPicture.asset(
+                                        "assets/icons/ic_document.svg"),
                                   ),
                                 ),
                                 const SizedBox(
@@ -149,15 +181,26 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 Text(
                                   "Document Verification in Pending".tr,
-                                  style: TextStyle(color: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800, fontSize: 22, fontFamily: AppThemeData.semiBold),
+                                  style: TextStyle(
+                                      color: themeChange.getThem()
+                                          ? AppThemeData.grey100
+                                          : AppThemeData.grey800,
+                                      fontSize: 22,
+                                      fontFamily: AppThemeData.semiBold),
                                 ),
                                 const SizedBox(
                                   height: 5,
                                 ),
                                 Text(
-                                  "Your documents are being reviewed. We will notify you once the verification is complete.".tr,
+                                  "Your documents are being reviewed. We will notify you once the verification is complete."
+                                      .tr,
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(color: themeChange.getThem() ? AppThemeData.grey50 : AppThemeData.grey500, fontSize: 16, fontFamily: AppThemeData.bold),
+                                  style: TextStyle(
+                                      color: themeChange.getThem()
+                                          ? AppThemeData.grey50
+                                          : AppThemeData.grey500,
+                                      fontSize: 16,
+                                      fontFamily: AppThemeData.bold),
                                 ),
                                 const SizedBox(
                                   height: 20,
@@ -175,23 +218,29 @@ class HomeScreen extends StatelessWidget {
                               ],
                             ),
                           )
-                        : controller.userModel.value.vendorID == null || controller.userModel.value.vendorID!.isEmpty
+                        : controller.userModel.value.vendorID == null ||
+                                controller.userModel.value.vendorID!.isEmpty
                             ? Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 16),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Container(
                                       decoration: ShapeDecoration(
-                                        color: themeChange.getThem() ? AppThemeData.grey700 : AppThemeData.grey200,
+                                        color: themeChange.getThem()
+                                            ? AppThemeData.grey700
+                                            : AppThemeData.grey200,
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(120),
+                                          borderRadius:
+                                              BorderRadius.circular(120),
                                         ),
                                       ),
                                       child: Padding(
                                         padding: const EdgeInsets.all(20),
-                                        child: SvgPicture.asset("assets/icons/ic_building_two.svg"),
+                                        child: SvgPicture.asset(
+                                            "assets/icons/ic_building_two.svg"),
                                       ),
                                     ),
                                     const SizedBox(
@@ -199,15 +248,26 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                     Text(
                                       "Add Your First Restaurant".tr,
-                                      style: TextStyle(color: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800, fontSize: 22, fontFamily: AppThemeData.semiBold),
+                                      style: TextStyle(
+                                          color: themeChange.getThem()
+                                              ? AppThemeData.grey100
+                                              : AppThemeData.grey800,
+                                          fontSize: 22,
+                                          fontFamily: AppThemeData.semiBold),
                                     ),
                                     const SizedBox(
                                       height: 5,
                                     ),
                                     Text(
-                                      "Get started by adding your restaurant details to manage your menu, orders, and reservations.".tr,
+                                      "Get started by adding your restaurant details to manage your menu, orders, and reservations."
+                                          .tr,
                                       textAlign: TextAlign.center,
-                                      style: TextStyle(color: themeChange.getThem() ? AppThemeData.grey50 : AppThemeData.grey500, fontSize: 16, fontFamily: AppThemeData.bold),
+                                      style: TextStyle(
+                                          color: themeChange.getThem()
+                                              ? AppThemeData.grey50
+                                              : AppThemeData.grey500,
+                                          fontSize: 16,
+                                          fontFamily: AppThemeData.bold),
                                     ),
                                     const SizedBox(
                                       height: 20,
@@ -226,47 +286,79 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               )
                             : Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16, vertical: 10),
                                 child: TabBarView(
                                   children: [
                                     controller.newOrderList.isEmpty
-                                        ? Constant.showEmptyView(message: "New Orders Not found")
+                                        ? Constant.showEmptyView(
+                                            message: "New Orders Not found")
                                         : ListView.builder(
                                             shrinkWrap: true,
-                                            itemCount: controller.newOrderList.length,
+                                            itemCount:
+                                                controller.newOrderList.length,
                                             itemBuilder: (context, index) {
-                                              OrderModel orderModel = controller.newOrderList[index];
-                                              return newOrderWidget(themeChange, context, orderModel, controller);
+                                              OrderModel orderModel = controller
+                                                  .newOrderList[index];
+                                              return newOrderWidget(
+                                                  themeChange,
+                                                  context,
+                                                  orderModel,
+                                                  controller);
                                             },
                                           ),
                                     controller.acceptedOrderList.isEmpty
-                                        ? Constant.showEmptyView(message: "Accepted Orders Not found")
+                                        ? Constant.showEmptyView(
+                                            message:
+                                                "Accepted Orders Not found")
                                         : ListView.builder(
                                             shrinkWrap: true,
-                                            itemCount: controller.acceptedOrderList.length,
+                                            itemCount: controller
+                                                .acceptedOrderList.length,
                                             itemBuilder: (context, index) {
-                                              OrderModel orderModel = controller.acceptedOrderList[index];
-                                              return acceptedWidget(themeChange, context, orderModel, controller);
+                                              OrderModel orderModel = controller
+                                                  .acceptedOrderList[index];
+                                              return acceptedWidget(
+                                                  themeChange,
+                                                  context,
+                                                  orderModel,
+                                                  controller);
                                             },
                                           ),
                                     controller.completedOrderList.isEmpty
-                                        ? Constant.showEmptyView(message: "Completed Orders Not found")
+                                        ? Constant.showEmptyView(
+                                            message:
+                                                "Completed Orders Not found")
                                         : ListView.builder(
                                             shrinkWrap: true,
-                                            itemCount: controller.completedOrderList.length,
+                                            itemCount: controller
+                                                .completedOrderList.length,
                                             itemBuilder: (context, index) {
-                                              OrderModel orderModel = controller.completedOrderList[index];
-                                              return completedAndRejectedWidget(themeChange, context, orderModel, controller);
+                                              OrderModel orderModel = controller
+                                                  .completedOrderList[index];
+                                              return completedAndRejectedWidget(
+                                                  themeChange,
+                                                  context,
+                                                  orderModel,
+                                                  controller);
                                             },
                                           ),
                                     controller.rejectedOrderList.isEmpty
-                                        ? Constant.showEmptyView(message: "Rejected Orders Not found")
+                                        ? Constant.showEmptyView(
+                                            message:
+                                                "Rejected Orders Not found")
                                         : ListView.builder(
                                             shrinkWrap: true,
-                                            itemCount: controller.rejectedOrderList.length,
+                                            itemCount: controller
+                                                .rejectedOrderList.length,
                                             itemBuilder: (context, index) {
-                                              OrderModel orderModel = controller.rejectedOrderList[index];
-                                              return completedAndRejectedWidget(themeChange, context, orderModel, controller);
+                                              OrderModel orderModel = controller
+                                                  .rejectedOrderList[index];
+                                              return completedAndRejectedWidget(
+                                                  themeChange,
+                                                  context,
+                                                  orderModel,
+                                                  controller);
                                             },
                                           ),
                                   ],
@@ -277,7 +369,8 @@ class HomeScreen extends StatelessWidget {
         });
   }
 
-  newOrderWidget(themeChange, BuildContext context, OrderModel orderModel, HomeController controller) {
+  newOrderWidget(themeChange, BuildContext context, OrderModel orderModel,
+      HomeController controller) {
     double totalAmount = 0.0;
     double subTotal = 0.0;
     double taxAmount = 0.0;
@@ -287,29 +380,48 @@ class HomeScreen extends StatelessWidget {
     for (var element in orderModel.products!) {
       if (double.parse(element.discountPrice.toString()) <= 0) {
         subTotal = subTotal +
-            double.parse(element.price.toString()) * double.parse(element.quantity.toString()) +
-            (double.parse(element.extrasPrice.toString()) * double.parse(element.quantity.toString()));
+            double.parse(element.price.toString()) *
+                double.parse(element.quantity.toString()) +
+            (double.parse(element.extrasPrice.toString()) *
+                double.parse(element.quantity.toString()));
       } else {
         subTotal = subTotal +
-            double.parse(element.discountPrice.toString()) * double.parse(element.quantity.toString()) +
-            (double.parse(element.extrasPrice.toString()) * double.parse(element.quantity.toString()));
+            double.parse(element.discountPrice.toString()) *
+                double.parse(element.quantity.toString()) +
+            (double.parse(element.extrasPrice.toString()) *
+                double.parse(element.quantity.toString()));
       }
     }
 
-    if (orderModel.specialDiscount != null && orderModel.specialDiscount!['special_discount'] != null) {
-      specialDiscount = double.parse(orderModel.specialDiscount!['special_discount'].toString());
+    if (orderModel.specialDiscount != null &&
+        orderModel.specialDiscount!['special_discount'] != null) {
+      specialDiscount = double.parse(
+          orderModel.specialDiscount!['special_discount'].toString());
     }
 
     if (orderModel.taxSetting != null) {
       for (var element in orderModel.taxSetting!) {
-        taxAmount = taxAmount + Constant.calculateTax(amount: (subTotal - double.parse(orderModel.discount.toString()) - specialDiscount).toString(), taxModel: element);
+        taxAmount = taxAmount +
+            Constant.calculateTax(
+                amount: (subTotal -
+                        double.parse(orderModel.discount.toString()) -
+                        specialDiscount)
+                    .toString(),
+                taxModel: element);
       }
     }
 
-    totalAmount = subTotal - double.parse(orderModel.discount.toString()) - specialDiscount + taxAmount;
+    totalAmount = subTotal -
+        double.parse(orderModel.discount.toString()) -
+        specialDiscount +
+        taxAmount;
 
     if (orderModel.adminCommissionType == 'Percent') {
-      adminCommission = (subTotal - double.parse(orderModel.discount.toString()) - specialDiscount) * double.parse(orderModel.adminCommission!) / 100;
+      adminCommission = (subTotal -
+              double.parse(orderModel.discount.toString()) -
+              specialDiscount) *
+          double.parse(orderModel.adminCommission!) /
+          100;
     } else {
       adminCommission = double.parse(orderModel.adminCommission!);
     }
@@ -317,13 +429,16 @@ class HomeScreen extends StatelessWidget {
     return InkWell(
       onTap: () async {
         await controller.playSound(false);
-        Get.to(const OrderDetailsScreen(), arguments: {"orderModel": orderModel});
+        Get.to(const OrderDetailsScreen(),
+            arguments: {"orderModel": orderModel});
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: Container(
           decoration: ShapeDecoration(
-            color: themeChange.getThem() ? AppThemeData.grey900 : AppThemeData.grey50,
+            color: themeChange.getThem()
+                ? AppThemeData.grey900
+                : AppThemeData.grey50,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),
@@ -337,7 +452,8 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     ClipOval(
                       child: NetworkImageWidget(
-                        imageUrl: orderModel.author!.profilePictureURL.toString(),
+                        imageUrl:
+                            orderModel.author!.profilePictureURL.toString(),
                         width: 40,
                         height: 40,
                         fit: BoxFit.cover,
@@ -353,7 +469,9 @@ class HomeScreen extends StatelessWidget {
                           Text(
                             orderModel.author!.fullName().toString().tr,
                             style: TextStyle(
-                              color: themeChange.getThem() ? AppThemeData.grey50 : AppThemeData.grey900,
+                              color: themeChange.getThem()
+                                  ? AppThemeData.grey50
+                                  : AppThemeData.grey900,
                               fontSize: 14,
                               fontFamily: AppThemeData.semiBold,
                             ),
@@ -362,7 +480,9 @@ class HomeScreen extends StatelessWidget {
                               ? Text(
                                   "Take Away".tr,
                                   style: TextStyle(
-                                    color: themeChange.getThem() ? AppThemeData.grey400 : AppThemeData.grey500,
+                                    color: themeChange.getThem()
+                                        ? AppThemeData.grey400
+                                        : AppThemeData.grey500,
                                     fontSize: 12,
                                     fontFamily: AppThemeData.medium,
                                   ),
@@ -370,7 +490,9 @@ class HomeScreen extends StatelessWidget {
                               : Text(
                                   orderModel.address!.getFullAddress().tr,
                                   style: TextStyle(
-                                    color: themeChange.getThem() ? AppThemeData.grey400 : AppThemeData.grey500,
+                                    color: themeChange.getThem()
+                                        ? AppThemeData.grey400
+                                        : AppThemeData.grey500,
                                     fontSize: 12,
                                     fontFamily: AppThemeData.medium,
                                   ),
@@ -383,7 +505,10 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: MySeparator(color: themeChange.getThem() ? AppThemeData.grey700 : AppThemeData.grey200),
+                  child: MySeparator(
+                      color: themeChange.getThem()
+                          ? AppThemeData.grey700
+                          : AppThemeData.grey200),
                 ),
                 ListView.separated(
                   shrinkWrap: true,
@@ -400,7 +525,9 @@ class HomeScreen extends StatelessWidget {
                               child: Text(
                                 "${product.quantity}x ${product.name}".tr,
                                 style: TextStyle(
-                                  color: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800,
+                                  color: themeChange.getThem()
+                                      ? AppThemeData.grey100
+                                      : AppThemeData.grey800,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                   fontFamily: AppThemeData.semiBold,
@@ -412,10 +539,26 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   double.parse(product.discountPrice ?? "0.0") <= 0
-                                      ? Constant.amountShow(amount: (double.parse(product.price.toString()) * double.parse(product.quantity.toString())).toString())
-                                      : Constant.amountShow(amount: (double.parse(product.discountPrice.toString()) * double.parse(product.quantity.toString())).toString()).tr,
+                                      ? Constant.amountShow(
+                                          amount:
+                                              (double.parse(product.price.toString()) *
+                                                      double.parse(product
+                                                          .quantity
+                                                          .toString()))
+                                                  .toString())
+                                      : Constant.amountShow(
+                                              amount: (double.parse(product
+                                                          .discountPrice
+                                                          .toString()) *
+                                                      double.parse(product
+                                                          .quantity
+                                                          .toString()))
+                                                  .toString())
+                                          .tr,
                                   style: TextStyle(
-                                    color: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800,
+                                    color: themeChange.getThem()
+                                        ? AppThemeData.grey100
+                                        : AppThemeData.grey800,
                                     fontSize: 16,
                                     fontWeight: FontWeight.w500,
                                     fontFamily: AppThemeData.semiBold,
@@ -423,12 +566,18 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 InkWell(
                                   onTap: () {
-                                    Get.to(const ProductRatingViewScreen(), arguments: {"orderModel": orderModel, "productId": product.id});
+                                    Get.to(const ProductRatingViewScreen(),
+                                        arguments: {
+                                          "orderModel": orderModel,
+                                          "productId": product.id
+                                        });
                                   },
                                   child: Text(
                                     "View Ratings".tr,
                                     style: TextStyle(
-                                      color: themeChange.getThem() ? AppThemeData.secondary300 : AppThemeData.secondary300,
+                                      color: themeChange.getThem()
+                                          ? AppThemeData.secondary300
+                                          : AppThemeData.secondary300,
                                       fontWeight: FontWeight.w500,
                                       decoration: TextDecoration.underline,
                                       fontFamily: AppThemeData.semiBold,
@@ -439,10 +588,12 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        product.variantInfo == null || product.variantInfo!.variantOptions!.isEmpty
+                        product.variantInfo == null ||
+                                product.variantInfo!.variantOptions!.isEmpty
                             ? Container()
                             : Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 5, vertical: 10),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -451,7 +602,9 @@ class HomeScreen extends StatelessWidget {
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
                                         fontFamily: AppThemeData.semiBold,
-                                        color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                                        color: themeChange.getThem()
+                                            ? AppThemeData.grey300
+                                            : AppThemeData.grey600,
                                         fontSize: 16,
                                       ),
                                     ),
@@ -462,21 +615,32 @@ class HomeScreen extends StatelessWidget {
                                       spacing: 6.0,
                                       runSpacing: 6.0,
                                       children: List.generate(
-                                        product.variantInfo!.variantOptions!.length,
+                                        product.variantInfo!.variantOptions!
+                                            .length,
                                         (i) {
                                           return Container(
                                             decoration: ShapeDecoration(
-                                              color: themeChange.getThem() ? AppThemeData.grey800 : AppThemeData.grey100,
-                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                                              color: themeChange.getThem()
+                                                  ? AppThemeData.grey800
+                                                  : AppThemeData.grey100,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8)),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 16,
+                                                      vertical: 5),
                                               child: Text(
                                                 "${product.variantInfo!.variantOptions!.keys.elementAt(i)} : ${product.variantInfo!.variantOptions![product.variantInfo!.variantOptions!.keys.elementAt(i)]}",
                                                 textAlign: TextAlign.start,
                                                 style: TextStyle(
-                                                  fontFamily: AppThemeData.medium,
-                                                  color: themeChange.getThem() ? AppThemeData.grey500 : AppThemeData.grey400,
+                                                  fontFamily:
+                                                      AppThemeData.medium,
+                                                  color: themeChange.getThem()
+                                                      ? AppThemeData.grey500
+                                                      : AppThemeData.grey400,
                                                 ),
                                               ),
                                             ),
@@ -503,17 +667,28 @@ class HomeScreen extends StatelessWidget {
                                           textAlign: TextAlign.start,
                                           style: TextStyle(
                                             fontFamily: AppThemeData.semiBold,
-                                            color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                                            color: themeChange.getThem()
+                                                ? AppThemeData.grey300
+                                                : AppThemeData.grey600,
                                             fontSize: 16,
                                           ),
                                         ),
                                       ),
                                       Text(
-                                        Constant.amountShow(amount: (double.parse(product.extrasPrice.toString()) * double.parse(product.quantity.toString())).toString()),
+                                        Constant.amountShow(
+                                            amount: (double.parse(product
+                                                        .extrasPrice
+                                                        .toString()) *
+                                                    double.parse(product
+                                                        .quantity
+                                                        .toString()))
+                                                .toString()),
                                         textAlign: TextAlign.start,
                                         style: TextStyle(
                                           fontFamily: AppThemeData.semiBold,
-                                          color: themeChange.getThem() ? AppThemeData.secondary300 : AppThemeData.secondary300,
+                                          color: themeChange.getThem()
+                                              ? AppThemeData.secondary300
+                                              : AppThemeData.secondary300,
                                           fontSize: 16,
                                         ),
                                       ),
@@ -527,17 +702,24 @@ class HomeScreen extends StatelessWidget {
                                       (i) {
                                         return Container(
                                           decoration: ShapeDecoration(
-                                            color: themeChange.getThem() ? AppThemeData.grey800 : AppThemeData.grey100,
-                                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                                            color: themeChange.getThem()
+                                                ? AppThemeData.grey800
+                                                : AppThemeData.grey100,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8)),
                                           ),
                                           child: Padding(
-                                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 16, vertical: 5),
                                             child: Text(
                                               product.extras![i].toString(),
                                               textAlign: TextAlign.start,
                                               style: TextStyle(
                                                 fontFamily: AppThemeData.medium,
-                                                color: themeChange.getThem() ? AppThemeData.grey500 : AppThemeData.grey400,
+                                                color: themeChange.getThem()
+                                                    ? AppThemeData.grey500
+                                                    : AppThemeData.grey400,
                                               ),
                                             ),
                                           ),
@@ -553,7 +735,10 @@ class HomeScreen extends StatelessWidget {
                   separatorBuilder: (BuildContext context, int index) {
                     return Padding(
                       padding: const EdgeInsets.only(top: 20, bottom: 10),
-                      child: MySeparator(color: themeChange.getThem() ? AppThemeData.grey700 : AppThemeData.grey200),
+                      child: MySeparator(
+                          color: themeChange.getThem()
+                              ? AppThemeData.grey700
+                              : AppThemeData.grey200),
                     );
                   },
                 ),
@@ -566,7 +751,9 @@ class HomeScreen extends StatelessWidget {
                       child: Text(
                         "Order Date".tr,
                         style: TextStyle(
-                          color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                          color: themeChange.getThem()
+                              ? AppThemeData.grey300
+                              : AppThemeData.grey600,
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppThemeData.regular,
@@ -576,7 +763,9 @@ class HomeScreen extends StatelessWidget {
                     Text(
                       Constant.timestampToDateTime(orderModel.createdAt!),
                       style: TextStyle(
-                        color: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800,
+                        color: themeChange.getThem()
+                            ? AppThemeData.grey100
+                            : AppThemeData.grey800,
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                         fontFamily: AppThemeData.semiBold,
@@ -593,7 +782,9 @@ class HomeScreen extends StatelessWidget {
                       child: Text(
                         "Total Amount".tr,
                         style: TextStyle(
-                          color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                          color: themeChange.getThem()
+                              ? AppThemeData.grey300
+                              : AppThemeData.grey600,
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppThemeData.regular,
@@ -603,7 +794,9 @@ class HomeScreen extends StatelessWidget {
                     Text(
                       Constant.amountShow(amount: totalAmount.toString()).tr,
                       style: TextStyle(
-                        color: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800,
+                        color: themeChange.getThem()
+                            ? AppThemeData.grey100
+                            : AppThemeData.grey800,
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                         fontFamily: AppThemeData.semiBold,
@@ -620,7 +813,9 @@ class HomeScreen extends StatelessWidget {
                       child: Text(
                         "Admin Commissions".tr,
                         style: TextStyle(
-                          color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                          color: themeChange.getThem()
+                              ? AppThemeData.grey300
+                              : AppThemeData.grey600,
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppThemeData.regular,
@@ -628,9 +823,12 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "-${Constant.amountShow(amount: adminCommission.toString())}".tr,
+                      "-${Constant.amountShow(amount: adminCommission.toString())}"
+                          .tr,
                       style: TextStyle(
-                        color: themeChange.getThem() ? AppThemeData.danger300 : AppThemeData.danger300,
+                        color: themeChange.getThem()
+                            ? AppThemeData.danger300
+                            : AppThemeData.danger300,
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                         fontFamily: AppThemeData.semiBold,
@@ -649,7 +847,9 @@ class HomeScreen extends StatelessWidget {
                             child: Text(
                               "Schedule Time".tr,
                               style: TextStyle(
-                                color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                                color: themeChange.getThem()
+                                    ? AppThemeData.grey300
+                                    : AppThemeData.grey600,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: AppThemeData.regular,
@@ -657,9 +857,13 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            Constant.timestampToDateTime(orderModel.scheduleTime!).tr,
+                            Constant.timestampToDateTime(
+                                    orderModel.scheduleTime!)
+                                .tr,
                             style: TextStyle(
-                              color: themeChange.getThem() ? AppThemeData.secondary300 : AppThemeData.secondary300,
+                              color: themeChange.getThem()
+                                  ? AppThemeData.secondary300
+                                  : AppThemeData.secondary300,
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                               fontFamily: AppThemeData.semiBold,
@@ -677,7 +881,8 @@ class HomeScreen extends StatelessWidget {
                           showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return viewRemarkDialog(controller, themeChange, orderModel);
+                              return viewRemarkDialog(
+                                  controller, themeChange, orderModel);
                             },
                           );
                         },
@@ -687,7 +892,9 @@ class HomeScreen extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: AppThemeData.regular,
                             decoration: TextDecoration.underline,
-                            color: themeChange.getThem() ? AppThemeData.secondary300 : AppThemeData.secondary300,
+                            color: themeChange.getThem()
+                                ? AppThemeData.secondary300
+                                : AppThemeData.secondary300,
                             fontSize: 16,
                           ),
                         ),
@@ -709,27 +916,41 @@ class HomeScreen extends StatelessWidget {
                             orderModel.status = Constant.orderRejected;
                             await FireStoreUtils.updateOrder(orderModel);
 
-                            await SendNotification.sendFcmMessage(Constant.restaurantRejected, orderModel.author!.fcmToken.toString(), {});
+                            await SendNotification.sendFcmMessage(
+                                Constant.restaurantRejected,
+                                orderModel.author!.fcmToken.toString(), {});
 
-                            if (orderModel.paymentMethod!.toLowerCase() != 'cod') {
-                              double finalAmount = (subTotal + double.parse(orderModel.discount.toString()) + specialDiscount + double.parse(taxAmount.toString())) +
-                                  double.parse(orderModel.deliveryCharge.toString()) +
+                            if (orderModel.paymentMethod!.toLowerCase() !=
+                                'cod') {
+                              double finalAmount = (subTotal +
+                                      double.parse(
+                                          orderModel.discount.toString()) +
+                                      specialDiscount +
+                                      double.parse(taxAmount.toString())) +
+                                  double.parse(
+                                      orderModel.deliveryCharge.toString()) +
                                   double.parse(orderModel.tipAmount.toString());
 
-                              WalletTransactionModel historyModel = WalletTransactionModel(
-                                  amount: finalAmount,
-                                  id: const Uuid().v4(),
-                                  orderId: orderModel.id,
-                                  userId: orderModel.author!.id,
-                                  date: Timestamp.now(),
-                                  isTopup: true,
-                                  paymentMethod: "Wallet",
-                                  paymentStatus: "success",
-                                  note: "Order Refund success",
-                                  transactionUser: "user");
+                              WalletTransactionModel historyModel =
+                                  WalletTransactionModel(
+                                      amount: finalAmount,
+                                      id: const Uuid().v4(),
+                                      orderId: orderModel.id,
+                                      userId: orderModel.author!.id,
+                                      date: Timestamp.now(),
+                                      isTopup: true,
+                                      paymentMethod: "Wallet",
+                                      paymentStatus: "success",
+                                      note: "Order Refund success",
+                                      transactionUser: "user");
 
-                              await FireStoreUtils.fireStore.collection(CollectionName.wallet).doc(historyModel.id).set(historyModel.toJson());
-                              await FireStoreUtils.updateUserWallet(amount: finalAmount.toString(), userId: orderModel.author!.id.toString());
+                              await FireStoreUtils.fireStore
+                                  .collection(CollectionName.wallet)
+                                  .doc(historyModel.id)
+                                  .set(historyModel.toJson());
+                              await FireStoreUtils.updateUserWallet(
+                                  amount: finalAmount.toString(),
+                                  userId: orderModel.author!.id.toString());
                             }
 
                             ShowToastDialog.closeLoader();
@@ -750,21 +971,26 @@ class HomeScreen extends StatelessWidget {
                           onPress: () async {
                             controller.playSound(false);
                             if (orderModel.scheduleTime != null) {
-                              if (orderModel.scheduleTime!.toDate().isBefore(Timestamp.now().toDate())) {
+                              if (orderModel.scheduleTime!
+                                  .toDate()
+                                  .isBefore(Timestamp.now().toDate())) {
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
-                                    return estimatedTimeDialog(controller, themeChange, orderModel);
+                                    return estimatedTimeDialog(
+                                        controller, themeChange, orderModel);
                                   },
                                 );
                               } else {
-                                ShowToastDialog.showToast("You can accept order on ${DateFormat("EEE dd MMMM , HH:mm a").format(orderModel.scheduleTime!.toDate())}.");
+                                ShowToastDialog.showToast(
+                                    "You can accept order on ${DateFormat("EEE dd MMMM , HH:mm a").format(orderModel.scheduleTime!.toDate())}.");
                               }
                             } else {
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
-                                  return estimatedTimeDialog(controller, themeChange, orderModel);
+                                  return estimatedTimeDialog(
+                                      controller, themeChange, orderModel);
                                 },
                               );
                             }
@@ -782,7 +1008,8 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  acceptedWidget(themeChange, BuildContext context, OrderModel orderModel, HomeController controller) {
+  acceptedWidget(themeChange, BuildContext context, OrderModel orderModel,
+      HomeController controller) {
     double totalAmount = 0.0;
     double subTotal = 0.0;
     double taxAmount = 0.0;
@@ -792,29 +1019,48 @@ class HomeScreen extends StatelessWidget {
     for (var element in orderModel.products!) {
       if (double.parse(element.discountPrice.toString()) <= 0) {
         subTotal = subTotal +
-            double.parse(element.price.toString()) * double.parse(element.quantity.toString()) +
-            (double.parse(element.extrasPrice.toString()) * double.parse(element.quantity.toString()));
+            double.parse(element.price.toString()) *
+                double.parse(element.quantity.toString()) +
+            (double.parse(element.extrasPrice.toString()) *
+                double.parse(element.quantity.toString()));
       } else {
         subTotal = subTotal +
-            double.parse(element.discountPrice.toString()) * double.parse(element.quantity.toString()) +
-            (double.parse(element.extrasPrice.toString()) * double.parse(element.quantity.toString()));
+            double.parse(element.discountPrice.toString()) *
+                double.parse(element.quantity.toString()) +
+            (double.parse(element.extrasPrice.toString()) *
+                double.parse(element.quantity.toString()));
       }
     }
 
-    if (orderModel.specialDiscount != null && orderModel.specialDiscount!['special_discount'] != null) {
-      specialDiscount = double.parse(orderModel.specialDiscount!['special_discount'].toString());
+    if (orderModel.specialDiscount != null &&
+        orderModel.specialDiscount!['special_discount'] != null) {
+      specialDiscount = double.parse(
+          orderModel.specialDiscount!['special_discount'].toString());
     }
 
     if (orderModel.taxSetting != null) {
       for (var element in orderModel.taxSetting!) {
-        taxAmount = taxAmount + Constant.calculateTax(amount: (subTotal - double.parse(orderModel.discount.toString()) - specialDiscount).toString(), taxModel: element);
+        taxAmount = taxAmount +
+            Constant.calculateTax(
+                amount: (subTotal -
+                        double.parse(orderModel.discount.toString()) -
+                        specialDiscount)
+                    .toString(),
+                taxModel: element);
       }
     }
 
-    totalAmount = subTotal - double.parse(orderModel.discount.toString()) - specialDiscount + taxAmount;
+    totalAmount = subTotal -
+        double.parse(orderModel.discount.toString()) -
+        specialDiscount +
+        taxAmount;
 
     if (orderModel.adminCommissionType == 'Percent') {
-      adminCommission = (subTotal - double.parse(orderModel.discount.toString()) - specialDiscount) * double.parse(orderModel.adminCommission!) / 100;
+      adminCommission = (subTotal -
+              double.parse(orderModel.discount.toString()) -
+              specialDiscount) *
+          double.parse(orderModel.adminCommission!) /
+          100;
     } else {
       adminCommission = double.parse(orderModel.adminCommission!);
     }
@@ -822,13 +1068,16 @@ class HomeScreen extends StatelessWidget {
     return InkWell(
       onTap: () async {
         await controller.playSound(false);
-        Get.to(const OrderDetailsScreen(), arguments: {"orderModel": orderModel});
+        Get.to(const OrderDetailsScreen(),
+            arguments: {"orderModel": orderModel});
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: Container(
           decoration: ShapeDecoration(
-            color: themeChange.getThem() ? AppThemeData.grey900 : AppThemeData.grey50,
+            color: themeChange.getThem()
+                ? AppThemeData.grey900
+                : AppThemeData.grey50,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),
@@ -841,7 +1090,8 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     ClipOval(
                       child: NetworkImageWidget(
-                        imageUrl: orderModel.author!.profilePictureURL.toString(),
+                        imageUrl:
+                            orderModel.author!.profilePictureURL.toString(),
                         width: 40,
                         height: 40,
                         fit: BoxFit.cover,
@@ -857,7 +1107,9 @@ class HomeScreen extends StatelessWidget {
                           Text(
                             orderModel.author!.fullName().toString().tr,
                             style: TextStyle(
-                              color: themeChange.getThem() ? AppThemeData.grey50 : AppThemeData.grey900,
+                              color: themeChange.getThem()
+                                  ? AppThemeData.grey50
+                                  : AppThemeData.grey900,
                               fontSize: 14,
                               fontFamily: AppThemeData.semiBold,
                             ),
@@ -866,7 +1118,9 @@ class HomeScreen extends StatelessWidget {
                               ? Text(
                                   "Take Away".tr,
                                   style: TextStyle(
-                                    color: themeChange.getThem() ? AppThemeData.grey400 : AppThemeData.grey500,
+                                    color: themeChange.getThem()
+                                        ? AppThemeData.grey400
+                                        : AppThemeData.grey500,
                                     fontSize: 12,
                                     fontFamily: AppThemeData.medium,
                                   ),
@@ -874,7 +1128,9 @@ class HomeScreen extends StatelessWidget {
                               : Text(
                                   orderModel.address!.getFullAddress().tr,
                                   style: TextStyle(
-                                    color: themeChange.getThem() ? AppThemeData.grey400 : AppThemeData.grey500,
+                                    color: themeChange.getThem()
+                                        ? AppThemeData.grey400
+                                        : AppThemeData.grey500,
                                     fontSize: 12,
                                     fontFamily: AppThemeData.medium,
                                   ),
@@ -887,7 +1143,10 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: MySeparator(color: themeChange.getThem() ? AppThemeData.grey700 : AppThemeData.grey200),
+                  child: MySeparator(
+                      color: themeChange.getThem()
+                          ? AppThemeData.grey700
+                          : AppThemeData.grey200),
                 ),
                 ListView.builder(
                   shrinkWrap: true,
@@ -904,7 +1163,9 @@ class HomeScreen extends StatelessWidget {
                               child: Text(
                                 "${product.quantity}x ${product.name}".tr,
                                 style: TextStyle(
-                                  color: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800,
+                                  color: themeChange.getThem()
+                                      ? AppThemeData.grey100
+                                      : AppThemeData.grey800,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                   fontFamily: AppThemeData.semiBold,
@@ -913,10 +1174,24 @@ class HomeScreen extends StatelessWidget {
                             ),
                             Text(
                               double.parse(product.discountPrice ?? "0.0") <= 0
-                                  ? Constant.amountShow(amount: (double.parse(product.price.toString()) * double.parse(product.quantity.toString())).toString())
-                                  : Constant.amountShow(amount: (double.parse(product.discountPrice.toString()) * double.parse(product.quantity.toString())).toString()).tr,
+                                  ? Constant.amountShow(
+                                      amount: (double.parse(
+                                                  product.price.toString()) *
+                                              double.parse(
+                                                  product.quantity.toString()))
+                                          .toString())
+                                  : Constant.amountShow(
+                                          amount: (double.parse(product
+                                                      .discountPrice
+                                                      .toString()) *
+                                                  double.parse(product.quantity
+                                                      .toString()))
+                                              .toString())
+                                      .tr,
                               style: TextStyle(
-                                color: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800,
+                                color: themeChange.getThem()
+                                    ? AppThemeData.grey100
+                                    : AppThemeData.grey800,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
                                 fontFamily: AppThemeData.semiBold,
@@ -924,10 +1199,12 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        product.variantInfo == null || product.variantInfo!.variantOptions!.isEmpty
+                        product.variantInfo == null ||
+                                product.variantInfo!.variantOptions!.isEmpty
                             ? Container()
                             : Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 5, vertical: 10),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -936,7 +1213,9 @@ class HomeScreen extends StatelessWidget {
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
                                         fontFamily: AppThemeData.semiBold,
-                                        color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                                        color: themeChange.getThem()
+                                            ? AppThemeData.grey300
+                                            : AppThemeData.grey600,
                                         fontSize: 16,
                                       ),
                                     ),
@@ -947,21 +1226,32 @@ class HomeScreen extends StatelessWidget {
                                       spacing: 6.0,
                                       runSpacing: 6.0,
                                       children: List.generate(
-                                        product.variantInfo!.variantOptions!.length,
+                                        product.variantInfo!.variantOptions!
+                                            .length,
                                         (i) {
                                           return Container(
                                             decoration: ShapeDecoration(
-                                              color: themeChange.getThem() ? AppThemeData.grey800 : AppThemeData.grey100,
-                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                                              color: themeChange.getThem()
+                                                  ? AppThemeData.grey800
+                                                  : AppThemeData.grey100,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8)),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 16,
+                                                      vertical: 5),
                                               child: Text(
                                                 "${product.variantInfo!.variantOptions!.keys.elementAt(i)} : ${product.variantInfo!.variantOptions![product.variantInfo!.variantOptions!.keys.elementAt(i)]}",
                                                 textAlign: TextAlign.start,
                                                 style: TextStyle(
-                                                  fontFamily: AppThemeData.medium,
-                                                  color: themeChange.getThem() ? AppThemeData.grey500 : AppThemeData.grey400,
+                                                  fontFamily:
+                                                      AppThemeData.medium,
+                                                  color: themeChange.getThem()
+                                                      ? AppThemeData.grey500
+                                                      : AppThemeData.grey400,
                                                 ),
                                               ),
                                             ),
@@ -988,17 +1278,28 @@ class HomeScreen extends StatelessWidget {
                                           textAlign: TextAlign.start,
                                           style: TextStyle(
                                             fontFamily: AppThemeData.semiBold,
-                                            color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                                            color: themeChange.getThem()
+                                                ? AppThemeData.grey300
+                                                : AppThemeData.grey600,
                                             fontSize: 16,
                                           ),
                                         ),
                                       ),
                                       Text(
-                                        Constant.amountShow(amount: (double.parse(product.extrasPrice.toString()) * double.parse(product.quantity.toString())).toString()),
+                                        Constant.amountShow(
+                                            amount: (double.parse(product
+                                                        .extrasPrice
+                                                        .toString()) *
+                                                    double.parse(product
+                                                        .quantity
+                                                        .toString()))
+                                                .toString()),
                                         textAlign: TextAlign.start,
                                         style: TextStyle(
                                           fontFamily: AppThemeData.semiBold,
-                                          color: themeChange.getThem() ? AppThemeData.secondary300 : AppThemeData.secondary300,
+                                          color: themeChange.getThem()
+                                              ? AppThemeData.secondary300
+                                              : AppThemeData.secondary300,
                                           fontSize: 16,
                                         ),
                                       ),
@@ -1012,17 +1313,24 @@ class HomeScreen extends StatelessWidget {
                                       (i) {
                                         return Container(
                                           decoration: ShapeDecoration(
-                                            color: themeChange.getThem() ? AppThemeData.grey800 : AppThemeData.grey100,
-                                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                                            color: themeChange.getThem()
+                                                ? AppThemeData.grey800
+                                                : AppThemeData.grey100,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8)),
                                           ),
                                           child: Padding(
-                                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 16, vertical: 5),
                                             child: Text(
                                               product.extras![i].toString(),
                                               textAlign: TextAlign.start,
                                               style: TextStyle(
                                                 fontFamily: AppThemeData.medium,
-                                                color: themeChange.getThem() ? AppThemeData.grey500 : AppThemeData.grey400,
+                                                color: themeChange.getThem()
+                                                    ? AppThemeData.grey500
+                                                    : AppThemeData.grey400,
                                               ),
                                             ),
                                           ),
@@ -1045,7 +1353,9 @@ class HomeScreen extends StatelessWidget {
                       child: Text(
                         "Order Date".tr,
                         style: TextStyle(
-                          color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                          color: themeChange.getThem()
+                              ? AppThemeData.grey300
+                              : AppThemeData.grey600,
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppThemeData.regular,
@@ -1055,7 +1365,9 @@ class HomeScreen extends StatelessWidget {
                     Text(
                       Constant.timestampToDateTime(orderModel.createdAt!),
                       style: TextStyle(
-                        color: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800,
+                        color: themeChange.getThem()
+                            ? AppThemeData.grey100
+                            : AppThemeData.grey800,
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                         fontFamily: AppThemeData.semiBold,
@@ -1072,7 +1384,9 @@ class HomeScreen extends StatelessWidget {
                       child: Text(
                         "Total Amount".tr,
                         style: TextStyle(
-                          color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                          color: themeChange.getThem()
+                              ? AppThemeData.grey300
+                              : AppThemeData.grey600,
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppThemeData.regular,
@@ -1082,7 +1396,9 @@ class HomeScreen extends StatelessWidget {
                     Text(
                       Constant.amountShow(amount: totalAmount.toString()).tr,
                       style: TextStyle(
-                        color: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800,
+                        color: themeChange.getThem()
+                            ? AppThemeData.grey100
+                            : AppThemeData.grey800,
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                         fontFamily: AppThemeData.semiBold,
@@ -1099,7 +1415,9 @@ class HomeScreen extends StatelessWidget {
                       child: Text(
                         "Admin Commissions".tr,
                         style: TextStyle(
-                          color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                          color: themeChange.getThem()
+                              ? AppThemeData.grey300
+                              : AppThemeData.grey600,
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppThemeData.regular,
@@ -1107,9 +1425,12 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "-${Constant.amountShow(amount: adminCommission.toString())}".tr,
+                      "-${Constant.amountShow(amount: adminCommission.toString())}"
+                          .tr,
                       style: TextStyle(
-                        color: themeChange.getThem() ? AppThemeData.danger300 : AppThemeData.danger300,
+                        color: themeChange.getThem()
+                            ? AppThemeData.danger300
+                            : AppThemeData.danger300,
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                         fontFamily: AppThemeData.semiBold,
@@ -1128,7 +1449,9 @@ class HomeScreen extends StatelessWidget {
                             child: Text(
                               "Schedule Time".tr,
                               style: TextStyle(
-                                color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                                color: themeChange.getThem()
+                                    ? AppThemeData.grey300
+                                    : AppThemeData.grey600,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: AppThemeData.regular,
@@ -1136,9 +1459,13 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            Constant.timestampToDateTime(orderModel.scheduleTime!).tr,
+                            Constant.timestampToDateTime(
+                                    orderModel.scheduleTime!)
+                                .tr,
                             style: TextStyle(
-                              color: themeChange.getThem() ? AppThemeData.secondary300 : AppThemeData.secondary300,
+                              color: themeChange.getThem()
+                                  ? AppThemeData.secondary300
+                                  : AppThemeData.secondary300,
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                               fontFamily: AppThemeData.semiBold,
@@ -1156,7 +1483,8 @@ class HomeScreen extends StatelessWidget {
                           showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return viewRemarkDialog(controller, themeChange, orderModel);
+                              return viewRemarkDialog(
+                                  controller, themeChange, orderModel);
                             },
                           );
                         },
@@ -1166,7 +1494,9 @@ class HomeScreen extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: AppThemeData.regular,
                             decoration: TextDecoration.underline,
-                            color: themeChange.getThem() ? AppThemeData.secondary300 : AppThemeData.secondary300,
+                            color: themeChange.getThem()
+                                ? AppThemeData.secondary300
+                                : AppThemeData.secondary300,
                             fontSize: 16,
                           ),
                         ),
@@ -1187,8 +1517,12 @@ class HomeScreen extends StatelessWidget {
 
                                   orderModel.status = Constant.orderCompleted;
                                   await FireStoreUtils.updateOrder(orderModel);
-                                  await FireStoreUtils.restaurantVendorWalletSet(orderModel);
-                                  await SendNotification.sendFcmMessage(Constant.takeawayCompleted, orderModel.author!.fcmToken.toString(), {});
+                                  await FireStoreUtils
+                                      .restaurantVendorWalletSet(orderModel);
+                                  await SendNotification.sendFcmMessage(
+                                      Constant.takeawayCompleted,
+                                      orderModel.author!.fcmToken.toString(),
+                                      {});
 
                                   ShowToastDialog.closeLoader();
                                 },
@@ -1208,9 +1542,15 @@ class HomeScreen extends StatelessWidget {
                         onTap: () async {
                           ShowToastDialog.showLoader("Please wait");
 
-                          UserModel? customer = await FireStoreUtils.getUserProfile(orderModel.authorID.toString());
-                          UserModel? restaurantUser = await FireStoreUtils.getUserProfile(orderModel.vendor!.author.toString());
-                          VendorModel? vendorModel = await FireStoreUtils.getVendorById(orderModel.vendorID.toString());
+                          UserModel? customer =
+                              await FireStoreUtils.getUserProfile(
+                                  orderModel.authorID.toString());
+                          UserModel? restaurantUser =
+                              await FireStoreUtils.getUserProfile(
+                                  orderModel.vendor!.author.toString());
+                          VendorModel? vendorModel =
+                              await FireStoreUtils.getVendorById(
+                                  orderModel.vendorID.toString());
                           ShowToastDialog.closeLoader();
 
                           Get.to(const ChatScreen(), arguments: {
@@ -1234,7 +1574,8 @@ class HomeScreen extends StatelessWidget {
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: SvgPicture.asset("assets/icons/ic_message.svg"),
+                              child: SvgPicture.asset(
+                                  "assets/icons/ic_message.svg"),
                             )),
                       )
                     ],
@@ -1248,7 +1589,8 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  completedAndRejectedWidget(themeChange, BuildContext context, OrderModel orderModel, HomeController controller) {
+  completedAndRejectedWidget(themeChange, BuildContext context,
+      OrderModel orderModel, HomeController controller) {
     double totalAmount = 0.0;
     double subTotal = 0.0;
     double taxAmount = 0.0;
@@ -1258,42 +1600,64 @@ class HomeScreen extends StatelessWidget {
     for (var element in orderModel.products!) {
       if (double.parse(element.discountPrice.toString()) <= 0) {
         subTotal = subTotal +
-            double.parse(element.price.toString()) * double.parse(element.quantity.toString()) +
-            (double.parse(element.extrasPrice.toString()) * double.parse(element.quantity.toString()));
+            double.parse(element.price.toString()) *
+                double.parse(element.quantity.toString()) +
+            (double.parse(element.extrasPrice.toString()) *
+                double.parse(element.quantity.toString()));
       } else {
         subTotal = subTotal +
-            double.parse(element.discountPrice.toString()) * double.parse(element.quantity.toString()) +
-            (double.parse(element.extrasPrice.toString()) * double.parse(element.quantity.toString()));
+            double.parse(element.discountPrice.toString()) *
+                double.parse(element.quantity.toString()) +
+            (double.parse(element.extrasPrice.toString()) *
+                double.parse(element.quantity.toString()));
       }
     }
 
-    if (orderModel.specialDiscount != null && orderModel.specialDiscount!['special_discount'] != null) {
-      specialDiscount = double.parse(orderModel.specialDiscount!['special_discount'].toString());
+    if (orderModel.specialDiscount != null &&
+        orderModel.specialDiscount!['special_discount'] != null) {
+      specialDiscount = double.parse(
+          orderModel.specialDiscount!['special_discount'].toString());
     }
 
     if (orderModel.taxSetting != null) {
       for (var element in orderModel.taxSetting!) {
-        taxAmount = taxAmount + Constant.calculateTax(amount: (subTotal - double.parse(orderModel.discount.toString()) - specialDiscount).toString(), taxModel: element);
+        taxAmount = taxAmount +
+            Constant.calculateTax(
+                amount: (subTotal -
+                        double.parse(orderModel.discount.toString()) -
+                        specialDiscount)
+                    .toString(),
+                taxModel: element);
       }
     }
 
-    totalAmount = subTotal - double.parse(orderModel.discount.toString()) - specialDiscount + taxAmount;
+    totalAmount = subTotal -
+        double.parse(orderModel.discount.toString()) -
+        specialDiscount +
+        taxAmount;
 
     if (orderModel.adminCommissionType == 'Percent') {
-      adminCommission = (subTotal - double.parse(orderModel.discount.toString()) - specialDiscount) * double.parse(orderModel.adminCommission!) / 100;
+      adminCommission = (subTotal -
+              double.parse(orderModel.discount.toString()) -
+              specialDiscount) *
+          double.parse(orderModel.adminCommission!) /
+          100;
     } else {
       adminCommission = double.parse(orderModel.adminCommission!);
     }
     return InkWell(
       onTap: () async {
         await controller.playSound(false);
-        Get.to(const OrderDetailsScreen(), arguments: {"orderModel": orderModel});
+        Get.to(const OrderDetailsScreen(),
+            arguments: {"orderModel": orderModel});
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: Container(
           decoration: ShapeDecoration(
-            color: themeChange.getThem() ? AppThemeData.grey900 : AppThemeData.grey50,
+            color: themeChange.getThem()
+                ? AppThemeData.grey900
+                : AppThemeData.grey50,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),
@@ -1306,7 +1670,8 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     ClipOval(
                       child: NetworkImageWidget(
-                        imageUrl: orderModel.author!.profilePictureURL.toString(),
+                        imageUrl:
+                            orderModel.author!.profilePictureURL.toString(),
                         width: 40,
                         height: 40,
                         fit: BoxFit.cover,
@@ -1322,7 +1687,9 @@ class HomeScreen extends StatelessWidget {
                           Text(
                             orderModel.author!.fullName().toString().tr,
                             style: TextStyle(
-                              color: themeChange.getThem() ? AppThemeData.grey50 : AppThemeData.grey900,
+                              color: themeChange.getThem()
+                                  ? AppThemeData.grey50
+                                  : AppThemeData.grey900,
                               fontSize: 14,
                               fontFamily: AppThemeData.semiBold,
                             ),
@@ -1331,7 +1698,9 @@ class HomeScreen extends StatelessWidget {
                               ? Text(
                                   "Take Away".tr,
                                   style: TextStyle(
-                                    color: themeChange.getThem() ? AppThemeData.grey400 : AppThemeData.grey500,
+                                    color: themeChange.getThem()
+                                        ? AppThemeData.grey400
+                                        : AppThemeData.grey500,
                                     fontSize: 12,
                                     fontFamily: AppThemeData.medium,
                                   ),
@@ -1339,7 +1708,9 @@ class HomeScreen extends StatelessWidget {
                               : Text(
                                   orderModel.address!.getFullAddress().tr,
                                   style: TextStyle(
-                                    color: themeChange.getThem() ? AppThemeData.grey400 : AppThemeData.grey500,
+                                    color: themeChange.getThem()
+                                        ? AppThemeData.grey400
+                                        : AppThemeData.grey500,
                                     fontSize: 12,
                                     fontFamily: AppThemeData.medium,
                                   ),
@@ -1352,7 +1723,10 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: MySeparator(color: themeChange.getThem() ? AppThemeData.grey700 : AppThemeData.grey200),
+                  child: MySeparator(
+                      color: themeChange.getThem()
+                          ? AppThemeData.grey700
+                          : AppThemeData.grey200),
                 ),
                 ListView.builder(
                   shrinkWrap: true,
@@ -1369,7 +1743,9 @@ class HomeScreen extends StatelessWidget {
                               child: Text(
                                 "${product.quantity}x ${product.name}".tr,
                                 style: TextStyle(
-                                  color: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800,
+                                  color: themeChange.getThem()
+                                      ? AppThemeData.grey100
+                                      : AppThemeData.grey800,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                   fontFamily: AppThemeData.semiBold,
@@ -1378,10 +1754,24 @@ class HomeScreen extends StatelessWidget {
                             ),
                             Text(
                               double.parse(product.discountPrice ?? "0.0") <= 0
-                                  ? Constant.amountShow(amount: (double.parse(product.price.toString()) * double.parse(product.quantity.toString())).toString())
-                                  : Constant.amountShow(amount: (double.parse(product.discountPrice.toString()) * double.parse(product.quantity.toString())).toString()).tr,
+                                  ? Constant.amountShow(
+                                      amount: (double.parse(
+                                                  product.price.toString()) *
+                                              double.parse(
+                                                  product.quantity.toString()))
+                                          .toString())
+                                  : Constant.amountShow(
+                                          amount: (double.parse(product
+                                                      .discountPrice
+                                                      .toString()) *
+                                                  double.parse(product.quantity
+                                                      .toString()))
+                                              .toString())
+                                      .tr,
                               style: TextStyle(
-                                color: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800,
+                                color: themeChange.getThem()
+                                    ? AppThemeData.grey100
+                                    : AppThemeData.grey800,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
                                 fontFamily: AppThemeData.semiBold,
@@ -1389,10 +1779,12 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        product.variantInfo == null || product.variantInfo!.variantOptions!.isEmpty
+                        product.variantInfo == null ||
+                                product.variantInfo!.variantOptions!.isEmpty
                             ? Container()
                             : Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 5, vertical: 10),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -1401,7 +1793,9 @@ class HomeScreen extends StatelessWidget {
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
                                         fontFamily: AppThemeData.semiBold,
-                                        color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                                        color: themeChange.getThem()
+                                            ? AppThemeData.grey300
+                                            : AppThemeData.grey600,
                                         fontSize: 16,
                                       ),
                                     ),
@@ -1412,21 +1806,32 @@ class HomeScreen extends StatelessWidget {
                                       spacing: 6.0,
                                       runSpacing: 6.0,
                                       children: List.generate(
-                                        product.variantInfo!.variantOptions!.length,
+                                        product.variantInfo!.variantOptions!
+                                            .length,
                                         (i) {
                                           return Container(
                                             decoration: ShapeDecoration(
-                                              color: themeChange.getThem() ? AppThemeData.grey800 : AppThemeData.grey100,
-                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                                              color: themeChange.getThem()
+                                                  ? AppThemeData.grey800
+                                                  : AppThemeData.grey100,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8)),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 16,
+                                                      vertical: 5),
                                               child: Text(
                                                 "${product.variantInfo!.variantOptions!.keys.elementAt(i)} : ${product.variantInfo!.variantOptions![product.variantInfo!.variantOptions!.keys.elementAt(i)]}",
                                                 textAlign: TextAlign.start,
                                                 style: TextStyle(
-                                                  fontFamily: AppThemeData.medium,
-                                                  color: themeChange.getThem() ? AppThemeData.grey500 : AppThemeData.grey400,
+                                                  fontFamily:
+                                                      AppThemeData.medium,
+                                                  color: themeChange.getThem()
+                                                      ? AppThemeData.grey500
+                                                      : AppThemeData.grey400,
                                                 ),
                                               ),
                                             ),
@@ -1453,17 +1858,28 @@ class HomeScreen extends StatelessWidget {
                                           textAlign: TextAlign.start,
                                           style: TextStyle(
                                             fontFamily: AppThemeData.semiBold,
-                                            color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                                            color: themeChange.getThem()
+                                                ? AppThemeData.grey300
+                                                : AppThemeData.grey600,
                                             fontSize: 16,
                                           ),
                                         ),
                                       ),
                                       Text(
-                                        Constant.amountShow(amount: (double.parse(product.extrasPrice.toString()) * double.parse(product.quantity.toString())).toString()),
+                                        Constant.amountShow(
+                                            amount: (double.parse(product
+                                                        .extrasPrice
+                                                        .toString()) *
+                                                    double.parse(product
+                                                        .quantity
+                                                        .toString()))
+                                                .toString()),
                                         textAlign: TextAlign.start,
                                         style: TextStyle(
                                           fontFamily: AppThemeData.semiBold,
-                                          color: themeChange.getThem() ? AppThemeData.secondary300 : AppThemeData.secondary300,
+                                          color: themeChange.getThem()
+                                              ? AppThemeData.secondary300
+                                              : AppThemeData.secondary300,
                                           fontSize: 16,
                                         ),
                                       ),
@@ -1477,17 +1893,24 @@ class HomeScreen extends StatelessWidget {
                                       (i) {
                                         return Container(
                                           decoration: ShapeDecoration(
-                                            color: themeChange.getThem() ? AppThemeData.grey800 : AppThemeData.grey100,
-                                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                                            color: themeChange.getThem()
+                                                ? AppThemeData.grey800
+                                                : AppThemeData.grey100,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8)),
                                           ),
                                           child: Padding(
-                                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 16, vertical: 5),
                                             child: Text(
                                               product.extras![i].toString(),
                                               textAlign: TextAlign.start,
                                               style: TextStyle(
                                                 fontFamily: AppThemeData.medium,
-                                                color: themeChange.getThem() ? AppThemeData.grey500 : AppThemeData.grey400,
+                                                color: themeChange.getThem()
+                                                    ? AppThemeData.grey500
+                                                    : AppThemeData.grey400,
                                               ),
                                             ),
                                           ),
@@ -1510,7 +1933,9 @@ class HomeScreen extends StatelessWidget {
                       child: Text(
                         "Order Date".tr,
                         style: TextStyle(
-                          color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                          color: themeChange.getThem()
+                              ? AppThemeData.grey300
+                              : AppThemeData.grey600,
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppThemeData.regular,
@@ -1520,7 +1945,9 @@ class HomeScreen extends StatelessWidget {
                     Text(
                       Constant.timestampToDateTime(orderModel.createdAt!),
                       style: TextStyle(
-                        color: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800,
+                        color: themeChange.getThem()
+                            ? AppThemeData.grey100
+                            : AppThemeData.grey800,
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                         fontFamily: AppThemeData.semiBold,
@@ -1537,7 +1964,9 @@ class HomeScreen extends StatelessWidget {
                       child: Text(
                         "Total Amount".tr,
                         style: TextStyle(
-                          color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                          color: themeChange.getThem()
+                              ? AppThemeData.grey300
+                              : AppThemeData.grey600,
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppThemeData.regular,
@@ -1547,7 +1976,9 @@ class HomeScreen extends StatelessWidget {
                     Text(
                       Constant.amountShow(amount: totalAmount.toString()).tr,
                       style: TextStyle(
-                        color: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800,
+                        color: themeChange.getThem()
+                            ? AppThemeData.grey100
+                            : AppThemeData.grey800,
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                         fontFamily: AppThemeData.semiBold,
@@ -1564,7 +1995,9 @@ class HomeScreen extends StatelessWidget {
                       child: Text(
                         "Admin Commissions".tr,
                         style: TextStyle(
-                          color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                          color: themeChange.getThem()
+                              ? AppThemeData.grey300
+                              : AppThemeData.grey600,
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppThemeData.regular,
@@ -1572,9 +2005,12 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "-${Constant.amountShow(amount: adminCommission.toString())}".tr,
+                      "-${Constant.amountShow(amount: adminCommission.toString())}"
+                          .tr,
                       style: TextStyle(
-                        color: themeChange.getThem() ? AppThemeData.danger300 : AppThemeData.danger300,
+                        color: themeChange.getThem()
+                            ? AppThemeData.danger300
+                            : AppThemeData.danger300,
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                         fontFamily: AppThemeData.semiBold,
@@ -1593,7 +2029,9 @@ class HomeScreen extends StatelessWidget {
                             child: Text(
                               "Schedule Time".tr,
                               style: TextStyle(
-                                color: themeChange.getThem() ? AppThemeData.grey300 : AppThemeData.grey600,
+                                color: themeChange.getThem()
+                                    ? AppThemeData.grey300
+                                    : AppThemeData.grey600,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: AppThemeData.regular,
@@ -1601,9 +2039,13 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            Constant.timestampToDateTime(orderModel.scheduleTime!).tr,
+                            Constant.timestampToDateTime(
+                                    orderModel.scheduleTime!)
+                                .tr,
                             style: TextStyle(
-                              color: themeChange.getThem() ? AppThemeData.secondary300 : AppThemeData.secondary300,
+                              color: themeChange.getThem()
+                                  ? AppThemeData.secondary300
+                                  : AppThemeData.secondary300,
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                               fontFamily: AppThemeData.semiBold,
@@ -1621,7 +2063,8 @@ class HomeScreen extends StatelessWidget {
                           showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return viewRemarkDialog(controller, themeChange, orderModel);
+                              return viewRemarkDialog(
+                                  controller, themeChange, orderModel);
                             },
                           );
                         },
@@ -1631,7 +2074,9 @@ class HomeScreen extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: AppThemeData.regular,
                             decoration: TextDecoration.underline,
-                            color: themeChange.getThem() ? AppThemeData.secondary300 : AppThemeData.secondary300,
+                            color: themeChange.getThem()
+                                ? AppThemeData.secondary300
+                                : AppThemeData.secondary300,
                             fontSize: 16,
                           ),
                         ),
@@ -1640,7 +2085,9 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: RoundedButtonFill(
                     title: orderModel.status.toString(),
-                    color: orderModel.status == Constant.orderRejected ? AppThemeData.danger300 : AppThemeData.secondary300,
+                    color: orderModel.status == Constant.orderRejected
+                        ? AppThemeData.danger300
+                        : AppThemeData.secondary300,
                     textColor: AppThemeData.grey50,
                     height: 5,
                     onPress: () async {},
@@ -1654,12 +2101,15 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  estimatedTimeDialog(HomeController controller, themeChange, OrderModel orderModel) {
+  estimatedTimeDialog(
+      HomeController controller, themeChange, OrderModel orderModel) {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       insetPadding: const EdgeInsets.all(10),
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      backgroundColor: themeChange.getThem() ? AppThemeData.surfaceDark : AppThemeData.surface,
+      backgroundColor: themeChange.getThem()
+          ? AppThemeData.surfaceDark
+          : AppThemeData.surface,
       child: SizedBox(
         width: 500,
         child: Column(
@@ -1673,7 +2123,9 @@ class HomeScreen extends StatelessWidget {
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontFamily: AppThemeData.semiBold,
-                  color: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800,
+                  color: themeChange.getThem()
+                      ? AppThemeData.grey100
+                      : AppThemeData.grey800,
                   fontSize: 18,
                 ),
               ),
@@ -1681,7 +2133,9 @@ class HomeScreen extends StatelessWidget {
             PreferredSize(
               preferredSize: const Size.fromHeight(4.0),
               child: Container(
-                color: themeChange.getThem() ? AppThemeData.grey700 : AppThemeData.grey200,
+                color: themeChange.getThem()
+                    ? AppThemeData.grey700
+                    : AppThemeData.grey200,
                 height: 3.0,
               ),
             ),
@@ -1705,8 +2159,12 @@ class HomeScreen extends StatelessWidget {
                       Expanded(
                         child: RoundedButtonFill(
                           title: "Cancel".tr,
-                          color: themeChange.getThem() ? AppThemeData.grey700 : AppThemeData.grey200,
-                          textColor: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800,
+                          color: themeChange.getThem()
+                              ? AppThemeData.grey700
+                              : AppThemeData.grey200,
+                          textColor: themeChange.getThem()
+                              ? AppThemeData.grey100
+                              : AppThemeData.grey800,
                           onPress: () async {
                             Get.back();
                           },
@@ -1721,19 +2179,25 @@ class HomeScreen extends StatelessWidget {
                           color: AppThemeData.secondary300,
                           textColor: AppThemeData.grey50,
                           onPress: () async {
-                            if (controller.estimatedTimeController.value.text.isNotEmpty) {
+                            if (controller.estimatedTimeController.value.text
+                                .isNotEmpty) {
                               ShowToastDialog.showLoader('Please wait...');
 
-                              orderModel.estimatedTimeToPrepare = controller.estimatedTimeController.value.text;
+                              orderModel.estimatedTimeToPrepare =
+                                  controller.estimatedTimeController.value.text;
                               orderModel.status = Constant.orderAccepted;
                               await FireStoreUtils.updateOrder(orderModel);
-                              await FireStoreUtils.restaurantVendorWalletSet(orderModel);
-                              await SendNotification.sendFcmMessage(Constant.restaurantAccepted, orderModel.author!.fcmToken.toString(), {});
+                              await FireStoreUtils.restaurantVendorWalletSet(
+                                  orderModel);
+                              await SendNotification.sendFcmMessage(
+                                  Constant.restaurantAccepted,
+                                  orderModel.author!.fcmToken.toString(), {});
 
                               ShowToastDialog.closeLoader();
                               Get.back();
                             } else {
-                              ShowToastDialog.showToast("Please enter estimated time");
+                              ShowToastDialog.showToast(
+                                  "Please enter estimated time");
                             }
                           },
                         ),
@@ -1752,12 +2216,15 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  viewRemarkDialog(HomeController controller, themeChange, OrderModel orderModel) {
+  viewRemarkDialog(
+      HomeController controller, themeChange, OrderModel orderModel) {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       insetPadding: const EdgeInsets.all(10),
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      backgroundColor: themeChange.getThem() ? AppThemeData.surfaceDark : AppThemeData.surface,
+      backgroundColor: themeChange.getThem()
+          ? AppThemeData.surfaceDark
+          : AppThemeData.surface,
       child: SizedBox(
         width: 500,
         child: Padding(
@@ -1767,21 +2234,28 @@ class HomeScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                 child: Text(
                   orderModel.notes.toString(),
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontFamily: AppThemeData.semiBold,
-                    color: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800,
+                    color: themeChange.getThem()
+                        ? AppThemeData.grey100
+                        : AppThemeData.grey800,
                     fontSize: 18,
                   ),
                 ),
               ),
               RoundedButtonFill(
                 title: "Cancel".tr,
-                color: themeChange.getThem() ? AppThemeData.grey700 : AppThemeData.grey200,
-                textColor: themeChange.getThem() ? AppThemeData.grey100 : AppThemeData.grey800,
+                color: themeChange.getThem()
+                    ? AppThemeData.grey700
+                    : AppThemeData.grey200,
+                textColor: themeChange.getThem()
+                    ? AppThemeData.grey100
+                    : AppThemeData.grey800,
                 onPress: () async {
                   Get.back();
                 },

@@ -2,25 +2,35 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>API_KEY</key>
-    <string>YOUR_FIREBASE_API_KEY</string>
-    <key>CLIENT_ID</key>
-    <string>YOUR_CLIENT_ID</string>
-    <key>PROJECT_ID</key>
-    <string>YOUR_PROJECT_ID</string>
-    <key>STORAGE_BUCKET</key>
-    <string>YOUR_PROJECT_ID.appspot.com</string>
-    <key>GCM_SENDER_ID</key>
-    <string>YOUR_PROJECT_NUMBER</string>
-    <key>PLIST_VERSION</key>
-    <string>1</string>
-    <key>BUNDLE_ID</key>
-    <string>YOUR_IOS_BUNDLE_ID</string>
-    <key>DATABASE_URL</key>
-    <string>https://YOUR_PROJECT_ID.firebaseio.com</string>
-    <key>TRACKING_ID</key>
-    <string>YOUR_TRACKING_ID</string>
-    <key>GOOGLE_APP_ID</key>
-    <string>YOUR_GOOGLE_APP_ID</string>
+	<key>CLIENT_ID</key>
+	<string>1076896286143-nm93fmnt0up375vfgmg5jqn0aauslg5n.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1076896286143-nm93fmnt0up375vfgmg5jqn0aauslg5n</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCcQA3L6tzTURbO2bdGZRzqGT7nJaXOPwg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1076896286143</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.siddhi.gromart.store</string>
+	<key>PROJECT_ID</key>
+	<string>gardengree-2b915</string>
+	<key>STORAGE_BUCKET</key>
+	<string>gardengree-2b915.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1076896286143:ios:be794dd21110a7e0554d0a</string>
+	<key>DATABASE_URL</key>
+	<string>https://gardengree-2b915-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

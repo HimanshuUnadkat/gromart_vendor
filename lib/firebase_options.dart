@@ -49,23 +49,23 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'YOUR_ANDROID_API_KEY',
-    appId: 'YOUR_ANDROID_APP_ID',
-    messagingSenderId: 'YOUR_ANDROID_MESSAGING_SENDER_ID',
-    projectId: 'YOUR_ANDROID_PROJECT_ID',
-    databaseURL: 'YOUR_ANDROID_DATABASE_URL',
-    storageBucket: 'YOUR_ANDROID_STORAGE_BUCKET',
+    apiKey: 'AIzaSyCPVOuje8BKUMYWmzuhXrVGdNk3Eud3FWM',
+    appId: '1:1076896286143:android:f18716b627fbc7c1554d0a',
+    messagingSenderId: '1076896286143',
+    projectId: 'gardengree-2b915',
+    databaseURL: 'https://gardengree-2b915-default-rtdb.firebaseio.com',
+    storageBucket: 'gardengree-2b915.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'YOUR_IOS_API_KEY',
-    appId: 'YOUR_IOS_APP_ID',
-    messagingSenderId: 'YOUR_IOS_MESSAGING_SENDER_ID',
-    projectId: 'YOUR_IOS_PROJECT_ID',
-    databaseURL: 'YOUR_IOS_DATABASE_URL',
-    storageBucket: 'YOUR_IOS_STORAGE_BUCKET',
-    androidClientId: 'YOUR_ANDROID_CLIENT_ID',
-    iosClientId: 'YOUR_IOS_CLIENT_ID',
-    iosBundleId: 'YOUR_IOS_BUNDLE_ID',
+    apiKey: 'AIzaSyCcQA3L6tzTURbO2bdGZRzqGT7nJaXOPwg',
+    appId: '1:1076896286143:ios:be794dd21110a7e0554d0a',
+    messagingSenderId: '1076896286143',
+    projectId: 'gardengree-2b915',
+    databaseURL: 'https://gardengree-2b915-default-rtdb.firebaseio.com',
+    storageBucket: 'gardengree-2b915.firebasestorage.app',
+    iosClientId: '1076896286143-nm93fmnt0up375vfgmg5jqn0aauslg5n.apps.googleusercontent.com',
+    iosBundleId: 'com.siddhi.gromart.store',
   );
+
 }
