@@ -37,7 +37,7 @@ class PhoneNumberScreen extends StatelessWidget {
                     style: TextStyle(color: themeChange.getThem() ? AppThemeData.grey50 : AppThemeData.grey900, fontSize: 22, fontFamily: AppThemeData.semiBold),
                   ),
                   Text(
-                    "Enter your mobile number to create your account and get started with GroMart in just a few steps.".tr,
+                    "Enter your mobile number to create your account and get started with Garden Greens in just a few steps.".tr,
                     style: TextStyle(color: themeChange.getThem() ? AppThemeData.grey400 : AppThemeData.grey500, fontSize: 16, fontFamily: AppThemeData.regular),
                   ),
                   const SizedBox(
