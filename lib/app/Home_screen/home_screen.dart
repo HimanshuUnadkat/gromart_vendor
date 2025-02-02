@@ -83,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Welcome to GroMart Store".tr,
+                                "Welcome to GardenGreen Store".tr,
                                 style: TextStyle(
                                     color: themeChange.getThem()
                                         ? AppThemeData.grey900

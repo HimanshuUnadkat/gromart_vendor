@@ -92,7 +92,7 @@ const Map<String, String> enUS = {
   "Please enter mobile number": "Please enter mobile number",
   "Continue with Email": "Continue with Email",
   "Create an Account": "Create an Account",
-  "Join GroMart Store today and start managing your store’s orders and reservations effortlessly.":
+  "Join GardenGreen Store today and start managing your store’s orders and reservations effortlessly.":
       "Join Garden Greens Store today and start managing your store’s orders and reservations effortlessly.",
   "First Name": "First Name",
   "Enter First Name": "Enter First Name",
@@ -136,7 +136,7 @@ const Map<String, String> enUS = {
   "Products": "Products",
   "Wallet": "Wallet",
   "Profile": "Profile",
-  "Welcome to GroMart Store": "Welcome to Garden Greens Store",
+  "Welcome to GardenGreen Store": "Welcome to Garden Greens Store",
   "New": "New",
   "History": "History",
   "Document Verification in Pending": "Document Verification in Pending",
@@ -377,7 +377,7 @@ const Map<String, String> enUS = {
   "HH:mm": "HH:mm",
   "Start Time": "Start Time",
   "Remove Time": "Remove Time",
-  "GroMart": "Garden Greens",
+  "GardenGreen": "Garden Greens",
   "Get Started": "Get Started",
   "Your Favorite Item Delivered Fast!": "Your Item Item Delivered Fast!",
 };

@@ -41,9 +41,9 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-    <string>Bluetooth access to connect 58mm or 80mm thermal printers</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Bluetooth access to connect 58mm or 80mm thermal printers</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>Bluetooth access to connect 58mm or 80mm thermal printers</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs access to camera permission</string>

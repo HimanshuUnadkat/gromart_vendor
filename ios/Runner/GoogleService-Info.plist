@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1076896286143-nm93fmnt0up375vfgmg5jqn0aauslg5n.apps.googleusercontent.com</string>
+	<string>1076896286143-ssehcrmjead86mtcv57e0uacijqtcgl0.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1076896286143-nm93fmnt0up375vfgmg5jqn0aauslg5n</string>
+	<string>com.googleusercontent.apps.1076896286143-ssehcrmjead86mtcv57e0uacijqtcgl0</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCcQA3L6tzTURbO2bdGZRzqGT7nJaXOPwg</string>
+	<string>AIzaSyBfMRA_-YrJ3EFSfKa5__2ViZFqQ0ttO48</string>
 	<key>GCM_SENDER_ID</key>
 	<string>1076896286143</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.siddhi.gromart.store</string>
+	<string>com.garden.green.store.app</string>
 	<key>PROJECT_ID</key>
 	<string>gardengree-2b915</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1076896286143:ios:be794dd21110a7e0554d0a</string>
+	<string>1:1076896286143:ios:4bf462b2733c85ce554d0a</string>
 	<key>DATABASE_URL</key>
 	<string>https://gardengree-2b915-default-rtdb.firebaseio.com</string>
 </dict>

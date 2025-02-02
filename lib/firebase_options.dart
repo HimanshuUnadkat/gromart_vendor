@@ -49,8 +49,8 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCPVOuje8BKUMYWmzuhXrVGdNk3Eud3FWM',
-    appId: '1:1076896286143:android:f18716b627fbc7c1554d0a',
+    apiKey: 'AIzaSyBfKjz6rt7G7ZlpbW0S8g6M6m9PMVz_YAg',
+    appId: '1:1076896286143:android:4457b32c439959ee554d0a',
     messagingSenderId: '1076896286143',
     projectId: 'gardengree-2b915',
     databaseURL: 'https://gardengree-2b915-default-rtdb.firebaseio.com',
@@ -58,14 +58,14 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCcQA3L6tzTURbO2bdGZRzqGT7nJaXOPwg',
-    appId: '1:1076896286143:ios:be794dd21110a7e0554d0a',
+    apiKey: 'AIzaSyBfMRA_-YrJ3EFSfKa5__2ViZFqQ0ttO48',
+    appId: '1:1076896286143:ios:4bf462b2733c85ce554d0a',
     messagingSenderId: '1076896286143',
     projectId: 'gardengree-2b915',
     databaseURL: 'https://gardengree-2b915-default-rtdb.firebaseio.com',
     storageBucket: 'gardengree-2b915.firebasestorage.app',
-    iosClientId: '1076896286143-nm93fmnt0up375vfgmg5jqn0aauslg5n.apps.googleusercontent.com',
-    iosBundleId: 'com.siddhi.gromart.store',
+    iosClientId: '1076896286143-ssehcrmjead86mtcv57e0uacijqtcgl0.apps.googleusercontent.com',
+    iosBundleId: 'com.garden.green.store.app',
   );
 
 }

@@ -1,5 +1,5 @@
-package com.gromart.store
+package com.garden.green.store.app
 
 import io.flutter.embedding.android.FlutterActivity
 
-class MainActivity: FlutterActivity()
+class MainActivity : FlutterActivity()
